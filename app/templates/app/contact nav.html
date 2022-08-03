@@ -1,0 +1,231 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+  <!--Owl Carousel CSS-->
+  <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
+
+  <!--FontAwesome CSS-->
+  <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+
+  <!--Custom CSS-->
+  <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'app/css/style2.css' %}">
+  <link rel="stylesheet" href="{% static 'app/css/lightslider.css' %}">
+
+  <link rel="stylesheet" href="{% static 'app/css/product_style.css' %}">
+  <script src="https://kit.fontawesome.com/063a62016e.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+  
+  <title>Apollo | {% block title %} {% endblock title %} </title>
+</head>
+
+<body style="background:url();">
+  <nav class="navbar navbar-expand-lg  navbar-light bg-dark " style="color: black;">
+    <div class="container">
+      <a href="/" class="navbar-brand" style="margin-left:-20%;"><img src="https://i.imgur.com/9P17nVK.png" height="75px"
+          width="250px"></a>
+      <!--a class="navbar-brand a2" href="/"  class="a2">Apollo</a-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 b1" style="color:rgb(0, 0, 0);">
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" href="{% url 'home' %}" style="color:white;">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" href="#" style="color:white;">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active " aria-current="page" href="{% url 'contact' %}" style="color:white;">Contact</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Categories
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+              <li><a class="dropdown-item" href="{% url 'pdrug' %}" style="color:rgb(0, 0, 0);">Prescribed Drugs</a>
+              </li>
+              <li><a class="dropdown-item" href="{% url 'suppli' %}"">Suppliments</a></li>
+               <li><a class=" dropdown-item" href="{% url 'supply' %}"">Medical Supplies</a></li>
+              </ul>
+           </li>
+        </ul>
+        <div style="margin-left:22%;">
+        <form method="get" action="{%url 'search'%}" class="d-flex" >
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="query">
+          <button style="margin-left:10px;" class="btn btn-warning" type="submit"><img src="{%static 'app/images/search icon.png'%}"></button>
+        </form>
+        </div>
+        <div>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {% if request.user.is_authenticated %}
+            <li class="nav-item dropdown mx-2">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                {{request.user.username|capfirst}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
+                <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+              </ul>
+            </li>
+            <li class="nav-item mx-2">
+              <a href="{% url 'showcart' %}" class="nav-link text-white"><span
+                  class="badge bg-danger">{{totalitem}}</span> Cart </a>
+            </li>
+            {% else %}
+            <li class="nav-item mx-2">
+              <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
+            </li>
+            {% endif %}
+          </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  {% block banner_slider %} {% endblock banner_slider %}
+  {% block livesale %} {% endblock livesale %}
+  {% block main-content %} {% endblock main-content %}
+
+  {% block payment-gateway %} {% endblock payment-gateway %}
+
+  <!-- Start Footer 
+  <footer class="container-fluid bg-dark text-center p-2 mt-5">
+    <small class="text-white">Copyright &copy; 2021 || Designed By GeekyShows || </small>
+    <img src="{% static 'app/images/payment.png' %}" alt="" srcset="" class="img-fluid" height="2px">
+  </footer> <!-- End Footer -->
+ <!-- Footer -->
+<!interfooter>
+  <style>
+     @import url('https://fonts.googleapis.com/css?family=Rubik&display=swap');
+
+body {
+    background: linear-gradient(0deg, #fff, 50%, #DEEEFE);
+    font-family: 'Rubik', sans-serif;
+    background: #455A64;
+    height: 100 !important
+}
+
+.container-fluid {
+    overflow: hidden;
+    margin-top: 250px;
+    background: #262626;
+    color: #627482 !important;
+    margin-bottom: 0;
+    padding-bottom: 0
+}
+
+small {
+    font-size: calc(12px + (15 - 12) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+.bold-text {
+    color: #989c9e !important
+}
+
+.mt-55 {
+    margin-top: calc(50px + (60 - 50) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+h3 {
+    font-size: calc(34px + (40 - 34) * ((100vw - 360px) / (1600 - 360))) !important
+}
+
+.social {
+    font-size: 21px !important
+}
+
+.rights {
+    font-size: calc(10px + (12 - 10) * ((100vw - 360px) / (1600 - 360))) !important
+}
+a{
+  color: gray;
+}
+  </style>
+  <div class="container-fluid pb-0 mb-0 justify-content-center text-light ">
+    <footer>
+        <div class="row my-5 justify-content-center py-5">
+            <div class="col-11">
+                <div class="row ">
+                    <div class="col-xl-8 col-md-4 col-sm-4 col-12 my-auto mx-auto a">
+                        <h3 class="text-muted mb-md-0 mb-5 bold-text">APOLLO.</h3>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-12">
+                        <h6 class="mb-3 mb-lg-4 bold-text "><b>MENU</b></h6>
+                        <ul class="list-unstyled">
+                          <a href="{% url 'home' %}" style="text-decoration: none" >  <li>Home</li> </a>
+                          <a href="#" style="text-decoration: none" >  <li>About</li> </a>
+                          <a href="{% url 'contact' %}" style="text-decoration: none" >  <li>Contact Us</li> </a>
+                          <a href="{% url 'login' %}" style="text-decoration: none" >  <li>Login</li> </a>
+                        </ul>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-12">
+                        <h6 class="mb-3 mb-lg-4 text-muted bold-text mt-sm-0 mt-5"><b>ADDRESS</b></h6>
+                        <a href="https://www.google.com/maps/place/Guru+Nanak+Dev+University,+Regional+Campus,+Jalandhar/@31.333588,75.6215062,17z/data=!3m1!4b1!4m5!3m4!1s0x391a598afff01ab1:0x4d676314655e801!8m2!3d31.333588!4d75.6236949"> <p class="mb-1">Guru Nanak Dev University, Regional Campus,</p>
+                        <p>Jalandhar</p></a>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-xl-8 col-md-4 col-sm-4 col-auto my-md-0 mt-5 order-sm-1 order-3 align-self-end">
+                        <p class="social text-muted mb-0 pb-0 bold-text">
+                          <a href="https://www.facebook.com/"><span  class="mx-2"><i class="fab fa-facebook-square"></i></span></a>
+                          <a href="https://www.facebook.com/"><span class="mx-2"><i class="fab fa-linkedin"></i></span></a>
+                          <a href="https://www.facebook.com/"><span class="mx-2"><i class="fab fa-twitter-square"></i></span></a>
+                          <a href="https://www.facebook.com/"><span class="mx-2"><i class="fab fa-instagram"></i></span></a>
+                        </p>
+                      <small class="rights"><span>&#174;</span> APOLLO All Rights Reserved.</small>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-1 align-self-end ">
+                        <h6 class="mt-55 mt-2 text-muted bold-text"><b>AMARPREET SINGH</b></h6><small> <span><i class="fa fa-envelope" aria-hidden="true"></i></span> asr16661@gmail.com</small>
+                    </div>
+                    <div class="col-xl-2 col-md-4 col-sm-4 col-auto order-2 align-self-end mt-3 ">
+                        <h6 class="text-muted bold-text"><b>APOLLO SUPPORT</b></h6><small><span><i class="fa fa-envelope" aria-hidden="true"></i></span>email </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+ 
+</footer-->
+<!-- Footer -->
+
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+    </script>
+
+  <script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'app/js/all.min.js' %}"></script>
+  <script src="{% static 'app/js/myscript.js' %}"></script>
+  <script src="{% static 'app/js/script.js' %}"></script>
+  <script src="{% static 'app/js/prodscript.js' %}"></script>
+  <script src="{% static 'app/js/product slider.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block main-content %}
+
+<div class="row mb-10">
+    <div class="col-lg-8 mx-auto">
+        <div class="bg-white p-5 mt-100 rounded-pill">
+
+            <!-- Custom rounded search bars with input group -->
+            <form>
+                <div class="input-group mb-4 border rounded-pill p-1" style="border-radius: 50px;">
+                    <div class="input-group-prepend border-0">
+                        <button id="button-addon4" type="button" class="btn btn-link text-info"><i
+                                class="fa fa-search"></i></button>
+                    </div>
+                    <input name="query" type="search" placeholder="Search by Name..."
+                        aria-describedby="button-addon4" class="form-control bg-none border-0">
+                </div>
+            </form>
+            <!-- End -->
+            {% if query != '' %}
+            {% if num_results != 0 %}
+            <h1>Search results for {{ query }}</h1>
+            <div class="col-sm-12">
+                <div class="row">
+                 {% for product in products %}
+                  <div class="col-sm-6 text-center mb-12">
+                   <a href="{% url 'product-detail' product.id %}" class="btn">
+                    <div class="item">
+                     <img src="{{product.product_image.url}}" alt="" width="500"  class="">
+                     <div class="fw-bold">{{product.title}}</div>
+                     <div class="fw-bold">Rs. {{product.discounted_price}} <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small></div>
+                    </div>
+                   </a>
+                  </div>
+                 {% endfor %}
+                </div>
+               </div>
+            {% else %}
+            <h1>No Search Results Found!</h1>
+            {% endif %}
+
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+{% endblock main-content %}

@@ -1,0 +1,330 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block banner_slider %}
+
+<style>
+  .zoom {
+    transition: transform .5s; /* Animation */
+  }
+  
+  .zoom:hover {
+    transform: scale(1.3); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+  </style>
+  
+
+<section class="home">
+  <div class="slider">
+     <div class="slide active" style="background-image: url('https://i.imgur.com/vqdFOXA.jpg')">
+         <div class="container">
+             <div class="caption">
+                 <h1>Prescription Drugs</h1>
+                 <p></p>
+                 <a  href="{% url 'pdrug' %}">Shop Now</a>
+             </div>
+         </div>
+     </div>
+     <div class="slide" style="background-image: url('https://i.imgur.com/XH6KhrS.jpg')">
+         <div class="container">
+             <div class="caption">
+                 <h1 >Suppliments</h1>
+                 <p></p>
+                 <a href="{% url 'suppli' %}">Shop Now</a>
+             </div>
+         </div>
+     </div>
+     <div class="slide" style="background-image: url('https://i.imgur.com/2gUrciW.png')">
+         <div class="container">
+             <div class="caption">
+                 <h1 >Medical Supplies</h1>
+                 <p></p>
+                 <a href="{% url 'supply' %}">Shop Now</a>
+             </div>
+         </div>
+     </div>
+  </div>
+
+ <!-- controls  -->
+ <div class="controls">
+     <div class="prev"> <pre> < </pre></div>
+     <div class="next"> <pre> > </pre></div>
+ </div>
+
+ <!-- indicators -->
+ <div class="indicator">
+ </div>
+
+</section>
+
+
+<script src="script.js"></script>
+{% endblock banner_slider %}
+
+
+
+
+
+
+
+{% block livesale %}
+<!-- Live Sale Section 
+<div class="container">
+  <div class="row bg-danger text-center p-5 text-white border-bottom shadow">
+    <h1>SALE IS LIVE NOW</h1>
+    <span>5% Instant Discount on Axis Bank Credit and Debit Card</span>
+    <small class="fw-lighter">Term and Condition Applied (For details visit Bank's official Website)</small>
+  </div>
+</div> 
+<!-- End Live Sale Section -->
+{% endblock livesale %}
+
+{% block main-content %}
+<style>
+h2 {
+  width: 200px;
+  margin: 50px auto;
+  border-bottom: 8px double rgb(236, 134, 39);
+  text-shadow: 0 0 2px #777, 3px 1px #aaa;
+  text-align: center;
+}
+// Demonstration styles
+/* Remove before adding to website */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  color: #333;
+}
+.introduction {
+  margin: 30px;
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 0 0 15px;
+  }
+  hr {
+    width: 25%;
+    height: 1px;
+    background-color: #ccc;
+    margin-top: 15px;;
+    margin-bottom: 15px;
+    margin-left: 0;
+    padding: 0;
+    border: 0;
+  }
+  p {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.4;
+    a {
+      color: #009FB4;
+      text-decoration: none;
+      transition: color .2s;
+      &:active,
+      &:focus,
+      &:hover {
+        color: #006C81;
+      }
+    }
+  }
+}
+/* Remove before adding to website */
+
+.banner-rnd {
+  position: relative;
+  display: block;
+  padding-top: 34px; /* 30px padding + .rnd-brands height */
+  padding-bottom: 30px;
+  text-align: center;
+  transition: background-color .2s;
+  background-image: url('http://aaronflynn.co.uk/img/banner-rnd-background.svg');
+  background-color:khaki;
+  background-size: calc(max(110%, 1200px));
+  background-position: center;
+  background-repeat: no-repeat;
+  .rnd-brands {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-flex;
+    width: 100%;
+    [class*=brands-] {
+      flex: 1;
+      height: 4px;
+    }
+    .brands-power {
+      background-color: #858CBD;
+    }
+    .brands-lab {
+      background-color: #FAAD3B;
+    }
+    .brands-cable {
+      background-color: #F05E22;
+    }
+    .brands-connect {
+      background-color: #00B2AF;
+    }
+    .brands-components {
+      background-color: #5090CC;
+    }
+  }
+  .rnd-logo {
+    width: 100%;
+    height: auto;
+    max-width: 160px;
+    margin-bottom: 30px;
+  }
+  .rnd-strapline {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin-bottom: 15px;
+  }
+  .rnd-text {
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  .rnd-btn {
+    display: inline-flex;
+    background-color: #F05E22;
+    border: 1px solid #F05E22;
+    padding: 10px 20px;
+    border-radius: 2px;
+    outline: 0;
+    overflow: hidden;
+    transition: background-color .2s, border-color .2s;
+    color: #fff;
+  }
+  &:focus,
+  &:hover {
+    text-decoration: none;
+    background-color: #000;
+    .rnd-btn {
+      background-color: #a7380c;
+      border-color: #a7380c;
+      color: #fff;
+    }
+  }
+  @media (min-width: 992px) {
+    text-align: left;
+    .rnd-text {
+      font-size: 1.4rem;
+      line-height: 1.4;
+    }
+  }
+}
+
+</style>
+<div class="mx-3" >
+  <h2 >Prescription Drugs</h2>
+  <!-- Slider 3 -->
+  <div class="owl-carousel" id="slider3">
+   {% for m in pres %}
+     <a href="{% url 'product-detail' m.id %}" class="btn zoom"><div class="item"><img src="{{m.product_image.url}}" alt="" height="300"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">A$ {{m.discounted_price}}</span></div></a>
+   {% endfor %}
+  </div>
+ </div>
+<a id="banner-rnd-1" class="banner-rnd" href="{% url 'pdrug'%}">
+  <div class="rnd-brands">
+    <div class="brands-power"></div>
+    <div class="brands-lab"></div>
+    <div class="brands-cable"></div>
+    <div class="brands-connect"></div>
+    <div class="brands-components"></div>
+  </div>
+  <div class="container">
+      <div class="col-12 col-lg-10">
+        <!-- Image used to retain font -->
+        <img alt="Our own great value RND range"  style="margin-left:100px;" class="rnd-strapline" src="https://i.imgur.com/AWdpWXr.png">
+      </div>
+    </div>
+  </div>
+</a>
+
+
+
+
+<!-- End Payment Info Section -->
+
+<!-------------------------------------owl------------------------->
+
+
+<!-- 2nd Product Slider -->
+<div class="mx-3" >
+  <h2>Suppliments</h2>
+  <!-- Slider 3 -->
+  <div class="owl-carousel" id="slider3">
+   {% for m in supp %}
+     <a href="{% url 'product-detail' m.id %}" class="btn zoom"><div class="item"><img src="{{m.product_image.url}}" alt="" height="300"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">A$ {{m.discounted_price}}</span></div></a>
+   {% endfor %}
+  </div>
+ </div>
+
+ <a id="banner-rnd-1" class="banner-rnd" href="{% url 'suppli'%}">
+  <div class="rnd-brands">
+    <div class="brands-power"></div>
+    <div class="brands-lab"></div>
+    <div class="brands-cable"></div>
+    <div class="brands-connect"></div>
+    <div class="brands-components"></div>
+  </div>
+  <div class="container">
+      <div class="col-12 col-lg-10">
+        <!-- Image used to retain font -->
+  </div>
+  
+  <img alt="Our own great value RND range" class="rnd-strapline" src="https://i.imgur.com/IOjEASH.png">
+      </div>
+    </div>
+  </div>
+</a>
+
+
+<!-- End 2nd Product Slider -->
+
+
+
+<!-- 3rd Product Slider -->
+<div class="mx-3" >
+ <h2>Medical Supplies</h2>
+ <!-- Slider 3 -->
+ <div class="owl-carousel" id="slider3">
+  {% for m in supply %}
+    <a href="{% url 'product-detail' m.id %}" class="btn zoom"><div class="item"><img src="{{m.product_image.url}}" alt="" height="300"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">Rs. {{m.discounted_price}}</span></div></a>
+  {% endfor %}
+ </div>
+</div>
+
+<a id="banner-rnd-1" class="banner-rnd" href="{% url 'contact'%}">
+  <div class="rnd-brands">
+    <div class="brands-power"></div>
+    <div class="brands-lab"></div>
+    <div class="brands-cable"></div>
+    <div class="brands-connect"></div>
+    <div class="brands-components"></div>
+  </div>
+  <div class="container">
+      <div class="col-12 col-lg-10">
+        <!-- Image used to retain font -->
+        <img alt="Our own great value RND range" class="rnd-strapline" src="https://i.imgur.com/1ZOgIc0.png">
+      </div>
+    </div>
+  </div>
+</a>
+
+<!-- End 2nd Product Slider -->
+{% endblock main-content %}
+
