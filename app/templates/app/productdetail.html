@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %}Product Detail{% endblock title %}
 {% block main-content %}
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
 <div class="container my-5">
  <div class="row">
   <div class="col-sm-6 text-center align-self-center">
@@ -22,11 +23,11 @@
 
    {% if user.is_authenticated  %}
     {% if item_already_in_cart  %}
-     <a href="{% url 'showcart' %}" class="btn btn-warning shadow px-5 py-2 ms-4">Go to Cart</a>
+     <a href="{% url 'showcart' %}" class="btn btn-warning shadow px-5 py-2" style="font-size: 18px;"><i class="fa fa-shopping-cart" style="font-size:18px;color:green"></i>  Go to Cart</a>
     {% else %}
      <form action="/add-to-cart" class="d-inline">
       <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
-      <button type="submit" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
+      <button type="submit" class="btn btn-primary shadow px-5 py-2" style="font-size: 18px;"><i class="fa fa-shopping-cart" style="font-size:18px;color:green"></i>  Add to Cart</button>
      </form>
     {% endif %}
    {% endif %}
@@ -34,19 +35,17 @@
    {% if not request.user.is_authenticated %}
      <form action="/add-to-cart" class="d-inline">
       <input type="hidden" name="prod_id" value="{{product.id}}" id="prod_id">
-      <button type="submit" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
+      <button type="submit" class="btn btn-primary shadow px-5 py-2" style="font-size: 18px;"><i class="fa fa-shopping-cart" style="font-size:18px;color:green"></i>  Add to Cart</button>
      </form>
    {% endif %}
 
 
-
-   <a href="{% url 'checkout' %}" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a>
+   <br> </br>
+   <a href="{% url 'checkout' %}" class="btn btn-danger shadow px-5 py-2" style="font-size: 18px;">  Buy Now</a>
    <h5 class="mt-5">Available Offers</h5>
    <ul>
-    <li>Bank Offer 5% Unlimited Cashback on Flipkart Axis Bank Credit</li>
-    <li>Special Price Get extra ₹3000 off (price inclusive of discount)</li>
-    <li>No cost EMI ₹1,667/month. Standard EMI also available</li>
-    <li>Partner Offer ₹2000 Flipkart Gift Card on Every 1000th Transaction with a new Visa Debit/Credit Card</li>
+    <li>Bank Offer 5% Unlimited Cashback on CommonWealth Bank Credit/Debit Cards</li>
+    <li>ZipPay and AfterPay Accepted</li>
    </ul>
   </div>
  </div>

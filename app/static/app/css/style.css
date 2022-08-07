@@ -59,3 +59,28 @@
     text-align: center;
   }
   
+
+h2 {
+  width: 200px;
+  margin: 50px auto;
+  border-bottom: 8px double rgb(236, 134, 39);
+  text-shadow: 0 0 2px #777, 3px 1px #aaa;
+  text-align: center;
+}
+/* Demonstration styles*/
+/* Remove before adding to website */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  color: #333;
+}
+
+
