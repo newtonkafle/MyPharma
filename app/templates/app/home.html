@@ -17,7 +17,7 @@
 
 <section class="home" style="display: static;">
   <div class="slider">
-     <div class="slide active" style="background-image: url('https://images.squarespace-cdn.com/content/v1/58027de7d2b8573caac8a58a/1605884759477-2YSJHEGF0ZHK03FS095W/Medical+doctor+prescribing+medication?format=1500w')">
+     <div class="slide active" style="background-image: url('https://www.vennershipley.co.uk/wp-content/uploads/2019/01/shutterstock_551914228-2.jpg')">
          <div class="container">
              <div class="caption">
                  <h1>Prescription Drugs</h1>
@@ -59,12 +59,12 @@
 
 {% block main-content %}
 
-<div class="mx-3" >
+<div class="mx-4" >
   <h2 >Prescription Drugs</h2>
   <!-- Slider 3 -->
   <div class="owl-carousel" id="slider3">
    {% for m in pres %}
-     <a href="{% url 'product-detail' m.id %}" class="btn zoom"><div class="item"><img src="{{m.product_image.url}}" alt="" height="300"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">A$ {{m.discounted_price}}</span></div></a>
+     <a href="{% url 'product-detail' m.id %}" class="btn zoom"><div class="item"><img src="{{m.product_image.url}}" alt="" height="200"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">A$ {{m.discounted_price}}</span></div></a>
    {% endfor %}
   </div>
  </div>
@@ -79,12 +79,12 @@
 
 
 <!-- 2nd Product Slider -->
-<div class="mx-3" >
+<div class="mx-4" >
   <h2>Suppliments</h2>
   <!-- Slider 3 -->
   <div class="owl-carousel" id="slider3">
    {% for m in supp %}
-     <a href="{% url 'product-detail' m.id %}" class="btn zoom"><div class="item"><img src="{{m.product_image.url}}" alt="" height="300"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">A$ {{m.discounted_price}}</span></div></a>
+     <a href="{% url 'product-detail' m.id %}" class="btn zoom"><div class="item"><img src="{{m.product_image.url}}" alt="" height="200"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">A$ {{m.discounted_price}}</span></div></a>
    {% endfor %}
   </div>
  </div>
@@ -96,12 +96,12 @@
 
 
 <!-- 3rd Product Slider -->
-<div class="mx-3" >
+<div class="mx-4" >
  <h2>Medical Supplies</h2>
  <!-- Slider 3 -->
  <div class="owl-carousel" id="slider3">
   {% for m in supply %}
-    <a href="{% url 'product-detail' m.id %}" class="btn zoom"><div class="item"><img src="{{m.product_image.url}}" alt="" height="300"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">Rs. {{m.discounted_price}}</span></div></a>
+    <a href="{% url 'product-detail' m.id %}" class="btn zoom"><div class="item"><img src="{{m.product_image.url}}" alt="" height="200"><span class="fw-bold">{{m.title}}</span><br><span class="fs-5">Rs. {{m.discounted_price}}</span></div></a>
   {% endfor %}
  </div>
 </div>
